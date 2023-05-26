@@ -388,25 +388,6 @@ begin
 
       signed:={$ifdef windows}isProperlySigned(TDOMElement(cheattable), signedstring, imagepos, image){$else}false{$endif};
 
-      try
-        tempnode:=CheatTable.Attributes.GetNamedItem('CheatEngineTableVersion');
-      except
-        tempnode:=nil;
-      end;
-
-      if tempnode<>nil then
-      begin
-        try
-          version:=strtoint(tempnode.TextContent);
-          if (version>CurrentTableVersion) then
-            showmessage(rsOSThereIsANewerVersionifCheatEngineOutEtc);
-
-          lastLoadedTableVersion:=version;
-        except
-          showmessage(rsOSThisCheatTableIsCorrupt);
-        end;
-      end;
-
 
       Files:=CheatTable.FindNode('Files');
       Forms:=CheatTable.FindNode('Forms');
